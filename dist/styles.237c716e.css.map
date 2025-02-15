@@ -1,0 +1,1 @@
+{"version":3,"sources":["src/css/styles.css"],"names":[],"mappings":"AAAA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA","file":"styles.237c716e.css","sourceRoot":"..","sourcesContent":["table, th, td {\r\n    border: 2px solid black;\r\n    border-collapse: collapse;\r\n}\r\nth{\r\n    width: 280px;\r\n}\r\ntable{\r\n    margin-top: 25px;\r\n}"]}
