@@ -118,7 +118,32 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   return newRequire;
 })({"src/index.js":[function(require,module,exports) {
+var form = document.getElementById('form');
+var enterName = document.getElementById('enterName');
+var enterSurame = document.getElementById('enterSurame');
+var enterAge = document.getElementById('enterAge');
+var enterFaculty = document.getElementById('enterFaculty');
+var enterCourse = document.getElementById('enterCourse');
+var submitBtn = document.getElementById('submitBtn');
+var table = document.getElementById('table');
+var students = [];
+form.addEventListener('submit', function (event) {
+  event.preventDefault();
+  var student = {
+    name: "".concat(enterName.value),
+    surname: "".concat(enterSurame.value),
+    age: Number(enterAge.value),
+    faculty: "".concat(enterFaculty.value),
+    course: "".concat(enterCourse.value)
+  };
+  students.push(student);
+  console.log(student); //test
+  console.log(students); //test
 
+  table.innerHTML += "        <tr>\n            <td>".concat(student.name, "</td>\n            <td>").concat(student.surname, "</td>\n            <td>").concat(student.age, "</td>\n            <td>").concat(student.faculty, "</td>\n            <td>").concat(student.course, "</td>\n            <td class=\"actions\"><button>\u0420\u0435\u0434\u0430\u0433\u0443\u0432\u0430\u0442\u0438</button><br><button>\u0412\u0438\u0434\u0430\u043B\u0438\u0442\u0438</button></td>\n        </tr>");
+  console.log(table);
+  form.reset();
+});
 },{}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -144,7 +169,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60242" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56158" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

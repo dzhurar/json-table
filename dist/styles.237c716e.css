@@ -1,12 +1,25 @@
-table, th, td {
-    border: 2px solid black;
+.container{
+    width: 1400px;
+    background-color: bisque;
+    margin: 0 auto;
+}
+button{
+    width: 100%;
+}
+#form{
+    padding-top: 15px;
+}
+table, th, td, tr {
+    border: 1px solid black;
     border-collapse: collapse;
 }
 th{
-    width: 280px;
+    width: 231px;
 }
 table{
     margin-top: 25px;
+    text-align: center;
+
 }
 
 /*# sourceMappingURL=/styles.237c716e.css.map */
