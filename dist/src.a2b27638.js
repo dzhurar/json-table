@@ -125,24 +125,75 @@ var enterAge = document.getElementById('enterAge');
 var enterFaculty = document.getElementById('enterFaculty');
 var enterCourse = document.getElementById('enterCourse');
 var submitBtn = document.getElementById('submitBtn');
-var table = document.getElementById('table');
+var tableBody = document.getElementById('tableBody');
+var saveBtn = document.getElementById('saveJson');
+form.addEventListener('submit', function (e) {
+  e.preventDefault();
+});
 var students = [];
-form.addEventListener('submit', function (event) {
-  event.preventDefault();
-  var student = {
-    name: "".concat(enterName.value),
-    surname: "".concat(enterSurame.value),
-    age: Number(enterAge.value),
-    faculty: "".concat(enterFaculty.value),
-    course: "".concat(enterCourse.value)
-  };
-  students.push(student);
-  console.log(student); //test
-  console.log(students); //test
-
-  table.innerHTML += "        <tr>\n            <td>".concat(student.name, "</td>\n            <td>").concat(student.surname, "</td>\n            <td>").concat(student.age, "</td>\n            <td>").concat(student.faculty, "</td>\n            <td>").concat(student.course, "</td>\n            <td class=\"actions\"><button>\u0420\u0435\u0434\u0430\u0433\u0443\u0432\u0430\u0442\u0438</button><br><button>\u0412\u0438\u0434\u0430\u043B\u0438\u0442\u0438</button></td>\n        </tr>");
-  console.log(table);
-  form.reset();
+var editingIndex = null;
+function updateTable() {
+  tableBody.innerHTML = '';
+  students.forEach(function (student, index) {
+    var row = document.createElement('tr');
+    row.innerHTML = "\n        <td>".concat(student.name, "</td>\n        <td>").concat(student.surname, "</td>\n        <td>").concat(student.age, "</td>\n        <td>").concat(student.faculty, "</td>\n        <td>").concat(student.course, "</td>\n        <td>\n            <button class=\"edit\" data-index=\"").concat(index, "\">\u0420\u0435\u0434\u0430\u0433\u0443\u0432\u0430\u0442\u0438</button>\n            <button class=\"delete\" data-index=\"").concat(index, "\">\u0412\u0438\u0434\u0430\u043B\u0438\u0442\u0438</button>\n        </td>");
+    tableBody.appendChild(row);
+  });
+}
+;
+submitBtn.addEventListener('click', function () {
+  var name = enterName.value;
+  var surname = enterSurame.value;
+  var age = Number(enterAge.value);
+  var faculty = enterFaculty.value;
+  var course = enterCourse.value;
+  if (name && surname && age && faculty && course) {
+    if (editingIndex !== null) {
+      students[editingIndex] = {
+        name: name,
+        surname: surname,
+        age: age,
+        faculty: faculty,
+        course: course
+      };
+      editingIndex = null;
+      submitBtn.textContent = 'Додати';
+    } else {
+      students.push({
+        name: name,
+        surname: surname,
+        age: age,
+        faculty: faculty,
+        course: course
+      });
+    }
+    updateTable();
+    form.reset();
+  } else {
+    alert('заповніть буль ласка всі поля');
+  }
+});
+tableBody.addEventListener('click', function (event) {
+  if (event.target.classList.contains('edit')) {
+    editingIndex = event.target.dataset.index;
+    var editingStudent = students[event.target.dataset.index];
+    enterName.value = editingStudent.name;
+    enterSurame.value = editingStudent.surname;
+    enterAge.value = editingStudent.age;
+    enterFaculty.value = editingStudent.faculty;
+    enterCourse.value = editingStudent.course;
+    submitBtn.textContent = 'Оновити';
+  }
+  if (event.target.classList.contains('delete')) {
+    students.splice(event.target.dataset.index, 1);
+    updateTable();
+    console.log(students);
+  }
+});
+updateTable();
+saveBtn.addEventListener('click', function () {
+  var studentsJson = JSON.stringify(students);
+  console.log(studentsJson);
 });
 },{}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
@@ -169,7 +220,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56158" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56853" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

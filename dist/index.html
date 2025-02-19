@@ -10,24 +10,30 @@
 <body>
     <div class="container">
         <form id="form">
-            <input required="" placeholder="Ім'я" type="text" id="enterName">
-            <input required="" placeholder="Прізвище" type="text" id="enterSurame">
-            <input required="" placeholder="Вік" type="text" id="enterAge">
-            <input required="" placeholder="Назва факультету" type="text" id="enterFaculty">
-            <input required="" placeholder="Назва курсу" type="text" id="enterCourse">
+            <input placeholder="Ім'я" type="text" id="enterName">
+            <input placeholder="Прізвище" type="text" id="enterSurame">
+            <input placeholder="Вік" type="text" id="enterAge">
+            <input placeholder="Назва факультету" type="text" id="enterFaculty">
+            <input placeholder="Назва курсу" type="text" id="enterCourse">
             <button type="submit" id="submitBtn">Готово</button>
         </form>
     
         <table id="table">
-            <tr>
-                <th>Ім'я</th>
-                <th>Прізвище</th>
-                <th>Вік</th>
-                <th>Факультет</th>
-                <th>Курс</th>
-                <th>Взаємодія</th>
-            </tr>
+            <thead>
+                <tr>
+                    <th>Ім'я</th>
+                    <th>Прізвище</th>
+                    <th>Вік</th>
+                    <th>Факультет</th>
+                    <th>Курс</th>
+                    <th>Взаємодія</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody">
+
+            </tbody>
         </table>
+        <button id="saveJson">Зберегти файл</button>
     </div>
     <script src="/src.a2b27638.js"></script>
 </body>

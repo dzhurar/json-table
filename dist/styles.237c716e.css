@@ -2,24 +2,34 @@
     width: 1400px;
     background-color: bisque;
     margin: 0 auto;
-}
-button{
-    width: 100%;
-}
-#form{
-    padding-top: 15px;
+    margin-top: 150px;
+    padding: 50px 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
 }
 table, th, td, tr {
     border: 1px solid black;
     border-collapse: collapse;
 }
 th{
-    width: 231px;
+    width: 150px;
 }
-table{
-    margin-top: 25px;
-    text-align: center;
+button{
+    padding: 5px 10px;
+    background-color: greenyellow;
+    font-weight: 700;
+    border: 1px solid black;
+    border-radius: 4px;
+    box-shadow: 2px 4px 7px rgba(0, 0, 0, 0.2);
+}
 
+.edit, .delete{
+    width: 100%;
+    border-radius: 0;
+    box-shadow: none;
 }
 
 /*# sourceMappingURL=/styles.237c716e.css.map */
